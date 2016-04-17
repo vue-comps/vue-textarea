@@ -121,7 +121,7 @@ module.exports =
       unless @opened and not @hovered
         @move(@size)
     process: ->
-      @value = @$els.content.textContent
+      @value = @$els.content?.textContent
       # get default sizes
       @size.width = @$els.ta.offsetWidth unless @size.width
       @size.height = @$els.ta.offsetHeight unless @size.height
@@ -219,5 +219,5 @@ module.exports =
         @open()
 
   attached: ->
-    @$nextTick @process
+    @process
 </script>
