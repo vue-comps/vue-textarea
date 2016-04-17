@@ -34,8 +34,8 @@ see [`dev/`](dev/) for examples.
 | value | String | `textContent` | (two-way) content of the textarea |
 | class | String | "" | class of the textarea |
 | size | Object | {height:`offsetHeight`,width:`offsetWidth`} | size of the closed textarea |
-| max-size | Number | {height:`Number.MAX_VALUE`,width:`this.size.width`}  | size of the opened textarea |
-| hover-size | Number | {height:`this.size.height`,width:`this.size.width`} | size of the closed textarea on hover |
+| max-size | Object | {height:`Number.MAX_VALUE`,width:`this.size.width`}  | size of the opened textarea |
+| hover-size | Object | {height:`this.size.height`,width:`this.size.width`} | size of the closed textarea on hover |
 | is-opened	| Boolean	| false | (two-way) set to open / close (will open on focus and close on blur)|
 | transition-in | function | no animation | animation for increasing size. Argument: {el,style,cb} |
 | transition-out | function | no animation | animation for reducing size. Argument: {el,style,cb} |
