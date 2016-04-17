@@ -118,7 +118,7 @@ module.exports =
           @hovered = true
           @move(@hoverSize)
     mouseleave: ->
-      unless @opened and not @hovered
+      if not @opened and @hovered
         @move(@size)
     process: ->
       @value = @$els.content?.textContent
@@ -219,5 +219,5 @@ module.exports =
         @open()
 
   attached: ->
-    @process
+    @process()
 </script>
