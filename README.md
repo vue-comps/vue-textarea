@@ -31,8 +31,13 @@ see [`dev/`](dev/) for examples.
 #### Props
 | Name | type | default | description |
 | ---:| --- | ---| --- |
-| value | String | `textContent` | (two-way) content of the textarea |
-| class | String | "" | class of the textarea |
+| value | String | textContent of slot | (two-way) content of the textarea |
+| taclass | VueClass | [] | class of the textarea |
+| style | VueStyle | [] | style of the wrapper div |
+| autofocus | Boolean | false | autofocus |
+| disabled | Boolean | false | disabled |
+| readonly | Boolean | false | readonly |
+| noExtraLine | Boolean | false | doesn't add the extra empty line on resize |
 | size | Object | {height:`offsetHeight`,width:`offsetWidth`} | size of the closed textarea |
 | max-size | Object | {height:`Number.MAX_VALUE`,width:`this.size.width`}  | size of the opened textarea |
 | hover-size | Object | {height:`this.size.height`,width:`this.size.width`} | size of the closed textarea on hover |
@@ -42,12 +47,14 @@ see [`dev/`](dev/) for examples.
 
 
 #### Events
+`focus`,`blur`, `keyup` will pass-through
 | Name |  description |
 | ---:| --- |
-| before-open | will be called before open animation |
-| opened |  will be called when opened |
-| before-close |  will be called before close animation |
-| closed |  will be called when closed |
+| before-open | will be emitted before open animation |
+| opened |  will be emitted when opened |
+| before-close |  will be emitted before close animation |
+| closed |  will be emitted when closed |
+| input | will be emitted when value changed |
 
 
 # Development
