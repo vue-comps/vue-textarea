@@ -55,8 +55,11 @@ after-enter |  will be called when opened
 before-leave |  will be called before close animation
 after-leave |  will be called when closed
 input | will be emitted when value changed
+toggled(isOpened:Boolean) | emitted when gets opened or closed. Alternative to use two-way `is-opened` prop
 
 ## Changelog
+-  
+added toggled event  
 
 - 1.0.0  
 events are renamed after vue transitions  
