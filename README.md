@@ -2,7 +2,6 @@
 
 a autoresizing textarea.
 
-
 ### [Demo](https://vue-comps.github.io/vue-textarea)
 
 # Install
@@ -29,33 +28,40 @@ components:
 see [`dev/`](dev/) for examples.
 
 #### Props
-| Name | type | default | description |
-| ---:| --- | ---| --- |
-| value | String | textContent of slot | (two-way) content of the textarea |
-| taclass | VueClass | [] | class of the textarea |
-| style | VueStyle | [] | style of the wrapper div |
-| autofocus | Boolean | false | autofocus |
-| disabled | Boolean | false | disabled |
-| readonly | Boolean | false | readonly |
-| noExtraLine | Boolean | false | doesn't add the extra empty line on resize |
-| size | Object | {height:`offsetHeight`,width:`offsetWidth`} | size of the closed textarea |
-| max-size | Object | {height:`Number.MAX_VALUE`,width:`this.size.width`}  | size of the opened textarea |
-| hover-size | Object | {height:`this.size.height`,width:`this.size.width`} | size of the closed textarea on hover |
-| is-opened	| Boolean	| false | (two-way) set to open / close (will open on focus and close on blur)|
-| transition-in | function | no animation | animation for increasing size. Argument: {el,style,cb} |
-| transition-out | function | no animation | animation for reducing size. Argument: {el,style,cb} |
+Name | type | default | description
+---:| --- | ---| ---
+value | String | textContent of slot | (two-way) content of the textarea
+taclass | VueClass | [] | class of the textarea
+style | VueStyle | [] | style of the wrapper div
+autofocus | Boolean | false | autofocus
+disabled | Boolean | false | disabled
+readonly | Boolean | false | readonly
+no-extra-line | Boolean | false | doesn't add the extra empty line on resize
+size | Object | {height:`offsetHeight`,width:`offsetWidth`} | size of the closed textarea
+max-size | Object | {height:`Number.MAX_VALUE`,width:`this.size.width`}  | size of the opened textarea
+hover-size | Object | {height:`this.size.height`,width:`this.size.width`} | size of the closed textarea on hover
+is-opened	| Boolean	| false | (two-way) set to open / close (will open on focus and close on blur)
+transition-in | Function | no animation | animation for increasing size. Argument: {el,style,cb}
+transition-out | Function | no animation | animation for reducing size. Argument: {el,style,cb}
 
 
 #### Events
-`focus`,`blur`, `keyup` will pass-through
-| Name |  description |
-| ---:| --- |
-| before-open | will be emitted before open animation |
-| opened |  will be emitted when opened |
-| before-close |  will be emitted before close animation |
-| closed |  will be emitted when closed |
-| input | will be emitted when value changed |
+`focus`, `blur`, `keyup` will pass-through
 
+Name |  description
+---:| ---
+before-enter | will be called before open animation
+after-enter |  will be called when opened
+before-leave |  will be called before close animation
+after-leave |  will be called when closed
+input | will be emitted when value changed
+
+## Changelog
+
+- 1.0.0  
+events are renamed after vue transitions  
+added unit tests  
+bugfixes  
 
 # Development
 Clone repository.

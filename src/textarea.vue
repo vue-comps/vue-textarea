@@ -22,6 +22,7 @@ div(
     @blur="onBlur",
     @keyup="onKeyup",
     @input="onInput",
+    @scroll="onScroll",
     style="resize:none;overflow:hidden")
   slot(name="label")
   div(
@@ -110,7 +111,7 @@ module.exports =
         fontFamily: @tastyle.getPropertyValue("font-family")
         letterSpacing: @tastyle.getPropertyValue("letter-spacing")
         minHeight: @tastyle.getPropertyValue("min-height")
-        maxWidth: if @maxWidth? then @maxWidth + "px" else @closed.width + "px"
+        maxWidth: if @maxWidth? then @maxWidth + "px" else null
         maxHeight: @maxHeight + "px"
         paddingTop: @inner.top + "px"
         paddingBottom: @inner.bottom + "px"
@@ -178,16 +179,20 @@ module.exports =
       unless e.defaultPrevented
         unless @opened or @value!=''
           e.preventDefault()
-          @$els.ta.focus()
+          @focus()
         @open()
     onFocus: (e) ->
       @$emit "focus", e
     onBlur: (e) ->
       @close()
       @$emit "blur", e
+    onScroll: (e) ->
+      @$emit "scroll", e
     focus: ->
+      @open()
       @$els.ta.focus()
     blur: ->
+      @close()
       @$els.ta.blur()
     onKeyup: (e) ->
       @$emit "keyup", e
@@ -233,15 +238,15 @@ module.exports =
 
     show: ->
       @setOpened()
-      @$emit "beforeOpen"
+      @$emit "before-enter"
       @move @content, =>
-        @$emit "opened"
+        @$emit "after-enter"
 
     hide: ->
-      @$emit "beforeClose"
+      @$emit "before-leave"
       @move @closed, =>
         @setClosed()
-        @$emit "closed"
+        @$emit "after-leave"
 
     open: ->
       return if @opened
@@ -258,7 +263,7 @@ module.exports =
         @open()
 
   ready: ->
-    @value ?= @$els.content?.textContent
+    @value = @$els.content?.textContent unless @value
     @tastyle = window.getComputedStyle(@$els.ta)
     @elstyle = window.getComputedStyle(@$el)
     @processContent()
